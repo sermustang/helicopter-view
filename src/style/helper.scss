@@ -1,0 +1,372 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+html, body {
+  height: 100%;
+}
+
+html {
+  font-size: 100%;
+  &.no-scroll {
+    overflow: hidden;
+  }
+  @include tablet-mobile() {
+    font-size: 87.5%;
+  }
+  @include mobile() {
+    font-size: 75%;
+  }
+}
+
+body {
+  font-family: 'ProximaNova', Arial;
+  line-height: 1.2;
+  color: $text-color;
+  background-color: #fff;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border: 0;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+a,
+button {
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    display: inline-block;
+    border: 0;
+    font-family: inherit;
+}
+
+input, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+input[type="submit"] {
+  cursor: pointer;
+}
+
+label {
+  cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.clearfix {
+  &:after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    clear: both;
+  }
+}
+
+.strong {
+  color: #000;
+  font-weight: 800;
+}
+
+.desktop {
+  @include tablet-mobile() {
+    display: none !important;
+  }
+}
+
+.tablet {
+  @include desktop() {
+    display: none !important;
+  }
+}
+
+.main-wrapper {
+  position: relative;
+  overflow-x: hidden;
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: toRem(-20);
+    right: toRem(-110);
+    width: toRem(390);
+    height: toRem(390);
+    border-radius: 50%;
+    background-color: rgb( 32, 170, 151);
+    opacity: 0.1;
+    @include tablet-mobile() {
+      top: toRem(-182, 14);
+    }
+    @include mobile() {
+      width: 50%;
+      height: 0;
+      padding-top: 50%;
+      right: -24%;
+      top: 0;
+      transform: translateY(-32%);
+    }
+  }
+}
+
+.page-wrapper {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+
+.container {
+  max-width: 1642px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 45px;
+  padding-right: 45px;
+  @include tablet-mobile() {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  @include mobile() {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+.overlay {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  z-index: 1000;
+  @include transition();
+  &.visible {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+#pagePreloader {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 1000;
+  @include transition();
+  #loaderSvg {
+    width: toRem(200);
+    #preloaderSectionTop {
+      animation: loaderTopSection 1.5s infinite;
+      transform-origin: 50% 31.7px;
+    }
+    #preloaderSectionBottom {
+      animation: loaderBottomSection 1.5s infinite;
+      transform-origin: 50% 31.7px;
+    }
+    #preloaderCenterCircle {
+      animation: loaderCenterCircle 1.5s infinite;
+      transform-origin: 50%;
+    }
+  }
+}
+@keyframes loaderBottomSection {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-90deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes loaderTopSection {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-90deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes loaderCenterCircle {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.page-content {
+  padding-top: toRem(108);
+  padding-bottom: toRem(124);
+  @include tablet-mobile() {
+    padding-top: toRem(64, 14);
+  }
+}
+
+.page-subtitle {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: toRem(90);
+  font-size: toRem(20);
+  font-weight: 800;
+  line-height: 1.8;
+  text-align: center;
+  @include tablet-mobile() {
+    width: 75%;
+    font-weight: 500;
+    margin-top: toRem(40, 14);
+  }
+  @include mobile() {
+    width: 100%;
+    padding-left: toRem(15, 12);
+    text-align: left;
+    p {
+      &:not(:first-of-type) {
+        margin-top: 1em;
+      }
+    }
+  }
+}
+
+.page-col-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 1px dotted #e8e8e8;
+  &:nth-of-type(1) {
+    left: 5.7%;
+  }
+  &:nth-of-type(2) {
+    left: 27.8%;
+  }
+  &:nth-of-type(3) {
+    left: 49.9%;
+  }
+  &:nth-of-type(4) {
+    left: 72%;
+  }
+  @include tablet-mobile() {
+    display: none;
+  }
+}
+
+.block-title {
+  margin-top: toRem(130);
+  @extend .strong;
+  font-size: toRem(60);
+  line-height: 1;
+  text-align: center;
+  letter-spacing: -0.01em;
+  &:after {
+    content: ".";
+    color: $highlight-color;
+  }
+  &.page-title {
+    margin-top: 0;
+    font-size: toRem(100);
+  }
+  @include tablet-mobile() {
+    font-size: toRem(58, 14);
+    letter-spacing: 0;
+    &.page-title {
+      font-size: toRem(70, 14);
+    }
+  }
+  @include mobile() {
+    margin-top: toRem(54);
+    padding-left: toRem(15, 12);
+    text-align: left;
+  }
+}
+
+.dot {
+  &:after {
+    content: ".";
+    font-size: 1.5em;
+    line-height: 0;
+  }
+}
+
+.container-2-col {
+  @include desktop() {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .col-item {
+      width: 45%;
+    }
+  }
+}
+
+.section-circle {
+  @include desktop() {
+    position: relative;
+    &:before {
+      content: '';
+      position: absolute;
+      left: toRem(-342);
+      width: toRem(818);
+      height: toRem(818);
+      border-radius: 50%;
+      background-color: rgb( 249, 249, 249 );
+      opacity: 0.4;
+    }
+    & > .container {
+      position: relative;
+    }
+  }
+}
+
+.no-visible {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.animate-fadeIn {
+  visibility: visible;
+  opacity: 1;
+  @include transition(opacity);
+  &.no-visible {
+    visibility: hidden;
+    opacity: 0;
+  }
+}

@@ -1,0 +1,52 @@
+$text-color: #585858;
+$highlight-color: #20aa97;
+
+$desktop: 1025;
+$tablet: 768;
+$mobile: $tablet - 1;
+
+@mixin transition($rule: all, $time: 0.3s) {
+	transition: $rule $time;
+}
+
+@mixin desktop {
+	@media screen and (min-width: #{$desktop}px) {
+	  @content;
+	}
+}
+
+@mixin tablet-desktop {
+  @media screen and (min-width: #{$tablet}px) {
+	@content;
+  }
+}
+
+@mixin tablet-mobile {
+  @media screen and (max-width: #{$desktop - 1}px) {
+	@content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: #{$desktop - 1}px) and (min-width: #{$tablet}px) {
+	@content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: #{$tablet - 1}px) {
+	@content;
+  }
+}
+
+@function toRem($px, $baseFontSize: 16) {
+  @return #{$px / $baseFontSize}rem;
+}
+
+@mixin placeholder($color, $weight: normal, $style: normal, $size: inherit) {
+	&::-moz-placeholder { color: $color; font-weight: $weight; font-style: $style; font-size: $size; opacity: 1; }
+	&::-webkit-input-placeholder { color: $color; font-weight: $weight; font-style: $style; font-size: $size; opacity: 1; }
+	&:-ms-input-placeholder { color: $color; font-weight: $weight; font-style: $style; font-size: $size; opacity: 1; }
+	&::-ms-input-placeholder { color: $color; font-weight: $weight; font-style: $style; font-size: $size; opacity: 1; }
+	&::placeholder { color: $color; font-weight: $weight; font-style: $style; font-size: $size; opacity: 1; }
+}

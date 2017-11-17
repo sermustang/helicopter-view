@@ -1,0 +1,28 @@
+{
+  "name": "helicopter-view",
+  "version": "1.0.0",
+  "dependencies": {
+    "browser-sync": "^2.18.8",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean-css": "^3.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-csslint": "^1.0.0",
+    "gulp-eslint": "^3.0.1",
+    "gulp-htmlhint": "^0.3.1",
+    "gulp-imagemin": "^3.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^2.1.2",
+    "gulp-watch": "^4.3.11",
+    "gulp.spritesmith": "^6.5.0",
+    "merge-stream": "^1.0.1",
+    "rimraf": "^2.6.1"
+  },
+  "main": "gulpfile.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

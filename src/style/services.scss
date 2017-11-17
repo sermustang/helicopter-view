@@ -1,0 +1,128 @@
+.section-services {
+  .container-services {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: toRem(22);
+  }
+  .service {
+    &-item {
+      width: 18%;
+      margin-top: toRem(100);
+      text-align: center;
+      &:hover {
+        .service-ico {
+          transform: scale(1.25);
+        }
+      }
+    }
+    &-ico {
+      margin-bottom: toRem(52);
+      padding-top: toRem(70);
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-size: auto 100%;
+      @include transition(transform);
+    }
+    &-descr {
+      font-size: toRem(18);
+      line-height: 1.33em;
+      span {
+        &:first-of-type:not([class="strong"]) {
+          position: relative;
+          top: -0.1em;
+        }
+      }
+      .strong {
+        display: block;
+        font-size: 1.11em;
+      }
+    }
+    @include tablet-mobile() {
+      &-item {
+        width: 48%;
+        margin-top: toRem(58, 14);
+      }
+      &-descr {
+        br {
+          display: none;
+        }
+      }
+    }
+    @include mobile() {
+      &-item {
+        margin-top: toRem(38, 12);
+      }
+      &-descr {
+        font-size: toRem(16, 12);
+      }
+    }
+  }
+}
+.section-offers {
+  .container-offers {
+    width: 77%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: toRem(50);
+    .offer {
+      &-item {
+        margin-top: toRem(62);
+        &:hover {
+          .offer-ico {
+            transform: scale(1.25);
+          }
+        }
+      }
+      &-ico {
+        width: 108px;
+        height: 108px;
+        margin-bottom: toRem(40);
+        border-radius: 50%;
+        position: relative;
+        border: 25px solid #fbfdfd;
+        background-color: #fbfdfd;
+        background-repeat: no-repeat;
+        background-position: center;
+        @include transition(transform);
+        &.small-ico {
+          border-width: 32px;
+        }
+        &-inner {
+          position: relative;
+        }
+        img {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+      &-descr {
+        font-size: toRem(18);
+        line-height: 1.56em;
+        .strong {
+          font-size: 1.11em;
+        }
+      }
+    }
+    @include tablet-mobile() {
+      width: 84%;
+      .offer-item {
+        &:first-of-type {
+          margin-top: toRem(40, 14);
+        }
+      }
+    }
+    @include mobile() {
+      width: 100%;
+      max-width: 600px;
+      margin-top: 0;
+      .offer {
+        &-descr {
+          font-size: toRem(16, 12);
+        }
+      }
+    }
+  }
+}

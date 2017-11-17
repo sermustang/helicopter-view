@@ -1,0 +1,142 @@
+header {
+  padding: toRem(34) 0 toRem(30);
+  border-bottom: 1px dotted #e8e8e8;
+  @include tablet-mobile() {
+    padding-top: toRem(10);
+    padding-bottom: toRem(10);
+  }
+  @include mobile() {
+    padding-top: toRem(12, 12);
+    padding-bottom: toRem(12, 12);
+  }
+}
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include tablet() {
+    padding-left: toRem(16, 14);
+    padding-right: toRem(16, 14);
+  }
+}
+.cont-main-logo {
+  display: flex;
+  align-items: center;
+  margin-right: 5%;
+  .main-logo {
+    width: toRem(56);
+  }
+  .logo-title {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: toRem(12);
+    font-size: toRem(20);
+    line-height: 1.1;
+  }
+}
+.cont-main-menu {
+  margin-left: 5%;
+  @include desktop() {
+    margin-top: toRem(8);
+  }
+  @include tablet-mobile() {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    transform: translateX(240px);
+    width: 240px;
+    overflow: auto;
+    background: #fff;
+    z-index: 1100;
+    @include transition();
+    &.menu-opened {
+      visibility: visible;
+      transform: translateX(0);
+    }
+  }
+  .main-menu {
+    & > li {
+      & > a {
+        padding-top: toRem(12);
+        padding-bottom: toRem(12);
+        position: relative;
+        font-size: 16px;
+        white-space: nowrap;
+        @extend .strong;
+        @extend .dot;
+        @include transition(color);
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: #000;
+          @include transition(width);
+        }
+        &:hover, &.active {
+          color: $highlight-color;
+          @include desktop() {
+            &:before {
+              width: 1em;
+            }
+          }
+        }
+      }
+    }
+    @include desktop() {
+      display: flex;
+      & > li {
+        &:not(:first-of-type) {
+          margin-left: toRem(54);
+        }
+      }
+    }
+    @media screen and (min-width: #{$desktop}px) and (max-width: 1440px) {
+      & > li {
+        &:not(:first-of-type) {
+          margin-left: toRem(24);
+        }
+      }
+    }
+    @include tablet-mobile() {
+      & > li {
+        border-bottom: 1px solid #ccc;
+        a {
+          display: block;
+          padding-left: 15px;
+          padding-right: 15px;
+        }
+      }
+    }
+  }
+  .cont-close-menu {
+    padding: 0 15px;
+    text-align: right;
+  }
+  .btn-close-menu {
+    padding: 5px 10px;
+    font-size: 40px;
+    line-height: 1;
+    background: transparent;
+  }
+}
+.btn-mob-menu {
+  width: 18px;
+  background: transparent;
+  span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #000;
+    &:not(:first-of-type) {
+      margin-top: 3px;
+    }
+    &:nth-of-type(2) {
+      width: 89%;
+    }
+  }
+}

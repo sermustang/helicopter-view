@@ -1,0 +1,24 @@
+footer {
+  padding: toRem(50) 0;
+  font-size: 14px;
+  line-height: 1.57;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  .link-development {
+    color: $highlight-color;
+    @include transition(color);
+    &:hover {
+      color: #1ec7b0;
+    }
+  }
+  @include tablet-mobile() {
+    padding-top: toRem(36, 14);
+    padding-bottom: toRem(36, 14);
+  }
+  @include mobile() {
+    span {
+      display: block;
+    }
+  }
+}
